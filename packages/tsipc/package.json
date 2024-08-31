@@ -1,0 +1,32 @@
+{
+  "name": "tsipc",
+  "version": "0.0.0",
+  "description": "Typesafe IPC for Electron",
+  "homepage": "https://github.com/makeryi/tsipc",
+  "bugs": {
+    "url": "https://github.com/makeryi/tsipc/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Ace",
+    "email": "hello@makeryi.me",
+    "url": "https://makeryi.me"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@tanstack/react-query": "catalog:",
+    "@types/node": "catalog:",
+    "electron": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "catalog:",
+    "electron": "catalog:"
+  },
+  "optionalDependencies": {
+    "@tanstack/react-query": "catalog:"
+  },
+  "packageManager": "pnpm@9.9.0"
+}
