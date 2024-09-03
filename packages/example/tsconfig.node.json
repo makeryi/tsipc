@@ -1,0 +1,27 @@
+{
+  "include": [
+    "electron.vite.config.ts",
+    "./src/main/**/*",
+    "./src/preload/**/*"
+  ],
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "allowJs": false,
+    "composite": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "noUncheckedIndexedAccess": true,
+    "sourceMap": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "types": ["electron-vite/node", "node"]
+  }
+}

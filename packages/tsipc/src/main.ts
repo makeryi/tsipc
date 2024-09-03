@@ -12,11 +12,24 @@ import type {
 export { tsipc }
 
 export const registerIpcMain = (router: RouterType) => {
-  for (const [name, route] of Object.entries(router)) {
-    ipcMain.handle(name, (e, payload) => {
-      return route.action({ context: { sender: e.sender }, input: payload })
-    })
+  const registerRoute = (prefix: string, route: RouterType) => {
+    for (const [name, child] of Object.entries(route)) {
+      const fullName = prefix ? `${prefix}.${name}` : name
+
+      if (typeof child === 'object' && 'action' in child) {
+        ipcMain.handle(fullName, (e, payload) => {
+          return child.action!({
+            context: { sender: e.sender },
+            input: payload
+          })
+        })
+      } else {
+        registerRoute(fullName, child as RouterType)
+      }
+    }
   }
+
+  registerRoute('', router)
 }
 
 export const getRendererHandlers = <T extends RendererHandlers>(
@@ -46,4 +59,4 @@ export const getRendererHandlers = <T extends RendererHandlers>(
   })
 }
 
-export * from '@/types'
+export * from './types'

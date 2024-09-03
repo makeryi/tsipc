@@ -17,7 +17,7 @@ const createChainFns = <TInput>() => {
 const tsipc = {
   create() {
     return {
-      procedure: createChainFns<void>()
+      procedure: createChainFns<{ input: void }>()
     }
   }
 }

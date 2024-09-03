@@ -1,6 +1,6 @@
 {
   "name": "tsipc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Typesafe IPC for Electron",
   "homepage": "https://github.com/makeryi/tsipc",
   "bugs": {
@@ -13,13 +13,37 @@
     "url": "https://makeryi.me"
   },
   "type": "module",
+  "exports": {
+    "./main": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    },
+    "./renderer": {
+      "types": "./dist/renderer.d.ts",
+      "import": "./dist/renderer.js",
+      "require": "./dist/renderer.cjs"
+    },
+    "./react-query": {
+      "types": "./dist/react-query.d.ts",
+      "import": "./dist/react-query.js",
+      "require": "./dist/react-query.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup ./src/main.ts ./src/renderer.ts ./src/react-query.ts --format esm,cjs --dts",
+    "dev": "tsup ./src/main.ts ./src/renderer.ts ./src/react-query.ts --format esm,cjs --watch --dts --onSuccess 'tsc --emitDeclarationOnly --declaration'"
+  },
   "devDependencies": {
     "@tanstack/react-query": "catalog:",
     "@types/node": "catalog:",
     "electron": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
     "@tanstack/react-query": "catalog:",
